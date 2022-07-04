@@ -25,10 +25,7 @@ resource "azurerm_virtual_network" "vnet" {
   location            = azurerm_resource_group.myresourcegroup.location
   address_space       = [var.address_space]
   resource_group_name = azurerm_resource_group.myresourcegroup.name
-  tags = {
-    Department = "devops",
-    Billable = "true"
-  }
+  
 }
 
 resource "azurerm_subnet" "subnet" {
@@ -139,7 +136,10 @@ resource "azurerm_virtual_machine" "catapp" {
     disable_password_authentication = false
   }
 
-  tags = {}
+  tags = {
+    Department = "devops",
+    Billable = "true"
+  }
 
   # Added to allow destroy to work correctly.
   depends_on = [azurerm_network_interface_security_group_association.catapp-nic-sg-ass]
