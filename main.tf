@@ -26,7 +26,8 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = [var.address_space]
   resource_group_name = azurerm_resource_group.myresourcegroup.name
   tags = {
-    Department = "devops"
+    Department = "devops",
+    Billable = "true"
   }
 }
 
